@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		07FC309D2149634100BEBE4F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FC309C2149634100BEBE4F /* main.swift */; };
+		07FC30A4214966EF00BEBE4F /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FC30A3214966EF00BEBE4F /* Menu.swift */; };
+		07FC30A62149832E00BEBE4F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FC30A52149832E00BEBE4F /* Task.swift */; };
+		07FC30A8214985BF00BEBE4F /* Task Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FC30A7214985BF00BEBE4F /* Task Manager.swift */; };
+		07FC30AA2149967A00BEBE4F /* Utilities .swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FC30A92149967A00BEBE4F /* Utilities .swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +29,10 @@
 /* Begin PBXFileReference section */
 		07FC30992149634100BEBE4F /* Task Manager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Task Manager"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07FC309C2149634100BEBE4F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		07FC30A3214966EF00BEBE4F /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		07FC30A52149832E00BEBE4F /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		07FC30A7214985BF00BEBE4F /* Task Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task Manager.swift"; sourceTree = "<group>"; };
+		07FC30A92149967A00BEBE4F /* Utilities .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utilities .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,10 @@
 			isa = PBXGroup;
 			children = (
 				07FC309C2149634100BEBE4F /* main.swift */,
+				07FC30A3214966EF00BEBE4F /* Menu.swift */,
+				07FC30A52149832E00BEBE4F /* Task.swift */,
+				07FC30A7214985BF00BEBE4F /* Task Manager.swift */,
+				07FC30A92149967A00BEBE4F /* Utilities .swift */,
 			);
 			path = "Task Manager";
 			sourceTree = "<group>";
@@ -119,7 +131,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07FC30A4214966EF00BEBE4F /* Menu.swift in Sources */,
+				07FC30AA2149967A00BEBE4F /* Utilities .swift in Sources */,
+				07FC30A62149832E00BEBE4F /* Task.swift in Sources */,
 				07FC309D2149634100BEBE4F /* main.swift in Sources */,
+				07FC30A8214985BF00BEBE4F /* Task Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
