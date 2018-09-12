@@ -10,7 +10,7 @@ import Foundation
 
 class taskManager {
     
-    fileprivate var taskArray: [Task] = [Task(title: "Laundry", priority: 1), Task(title: "Dishes", priority: 2), Task(title: "Feed Dog", priority: 3)]
+    fileprivate var taskArray: [Task] = [Task(title: "Laundry", description: "Wash whites, colors and bedding", priority: .One), Task(title: "Dishes",description: "Empty dish washer.", priority: .Two), Task(title: "Feed Dog",description: "Only one cup of food and water.", priority: .Three)]
     
 func addTask(){
     print ("Add a new task:")
@@ -108,7 +108,7 @@ func listUncompleteTask() -> [Task] {
         
         var checkList = false
         for task in taskArray {
-            if Task.completedTask == true {
+            if task.completionStatus == true {
                 checkList = true
             }
         }
@@ -117,7 +117,7 @@ func listUncompleteTask() -> [Task] {
         }
         
         for (i, index) in taskArray.enumerated() {
-            if index.completedTask == true {
+            if index.completionStatus == true {
                 
                 print("\(i + 1) \(index.title)")
             }
@@ -136,17 +136,17 @@ func listUncompleteTask() -> [Task] {
                     
                     taskArray[input - 1].markTaskComplete = false
                     let currentCalendar = Calendar.current
-                    let dueDate = currentCalendar.date(byAdding: .day, value: 14, to: Date())
-                    taskArray[input - 1].dueDate = dueDate
-                    if let dueDate = dueDate{
+                    let completeByDate = currentCalendar.date(byAdding: .day, value: 14, to: Date())
+                    taskArray[input - 1].completeByDate = completeByDate
+                    if let completeByDate = completeByDate{
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "MM/dd/yyyy"
-                        print("\(taskArray[input - 1].title) is due on \(dateFormatter.string(from: dueDate))")
+                        print("\(taskArray[input - 1].title) is due on \(dateFormatter.string(from: completeByDate))")
                     }
                 }
                 
             } else {
-                print("Invalid Input! Please enter in a number between 1 and \(gameArray.count)")
+                print("Invalid Input! Please enter in a number between 1 and \(taskArray.count)")
             }
         } else {
             print("Invalid Input! Please enter in a number between 1 and \(taskArray.count)")
@@ -154,21 +154,21 @@ func listUncompleteTask() -> [Task] {
         }
         
     }
-    func checkGameIn(){
+    func markTaskIncomplete(){
         
-        print("What game would you like to check in?")
+        print("What task would you like to mark incomplete?")
         
         var checkList = false
-        for game in gameArray {
-            if game.checkedIn == false {
+        for task in taskArray {
+            if task.markTaskIncomplete == false {
                 checkList = true
             }
         }
         if !checkList {
-            return print("There are no games available to check in.")
+            return print("There are no task available to mark incomplete.")
         }
         
-        for (i, index) in gameArray.enumerated() {
+        for (i, index) in taskArray.enumerated() {
             if index.checkedIn == false{
                 
                 print("\(i + 1) \(index.title)")
@@ -177,31 +177,31 @@ func listUncompleteTask() -> [Task] {
         
         print("\n")
         
-        print("Please enter in a number corresponding to the game you want to check in:")
+        print("Please enter in a number corresponding to the task you want to mark incomplete:")
         
         if let input = Int(readLine()!) {
             
-            if input > 0 && input < gameArray.count {
-                if gameArray[input - 1].checkedIn {
+            if input > 0 && input < taskArray.count {
+                if taskArray[input - 1].checkedIn {
                     return print("This game is already found in the library.")
                 } else {
-                    gameArray[input - 1].checkedIn = true
-                    gameArray[input - 1].dueDate = nil
+                    taskArray[input - 1].checkedIn = true
+                    taskArray[input - 1].dueDate = nil
                     print("These are available for check out:")
                     print("")
-                    for game in gameArray{
-                        if game.checkedIn == true {
-                            print(game.title)
+                    for task in taskArray{
+                        if task.checkedIn == true {
+                            print(task.title)
                         }
                     }
                 }
             } else {
-                print("Invalid Input! Please enter in a number between 1 and \(gameArray.count) \n")
-                checkGameIn()
+                print("Invalid Input! Please enter in a number between 1 and \(taskArray.count) \n")
+                markTaskIncomplete()
             }
         } else {
-            print("Invalid Input! Please enter in a number between 1 and \(gameArray.count) \n")
-            checkGameIn()
+            print("Invalid Input! Please enter in a number between 1 and \(taskArray.count) \n")
+            markTaskIncomplete()
         }
     }
 }
