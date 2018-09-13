@@ -57,20 +57,22 @@ class Menu {
             TaskManager.removeTask()
             help()
         case "3":
-            TaskManager.listCompleteTask()
+            TaskManager.listAllTask()
             help()
         case "4":
-            //library.checkGameOut()
+            TaskManager.listCompleteTask()
             help()
         case "5":
-            //library.checkGameIn()
+            TaskManager.listIncompleteTask()
             help()
         case "6":
-            TaskManager.listUncompleteTask()
+            TaskManager.markTaskComplete()
             help()
         case "7":
+            TaskManager.markTaskIncomplete()
             help()
         case "8":
+            TaskManager.completionDate()
             quit()
         default:
             break
