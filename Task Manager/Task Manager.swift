@@ -130,11 +130,11 @@ func listUncompleteTask() -> [Task] {
         if let input = Int(readLine()!) {
             
             if input > 0 && input < taskArray.count {
-                if !taskArray[input - 1].markTaskComplete{
+                if !taskArray[input - 1].completionStatus{
                     return print("This task is complete.")
                 } else {
                     
-                    taskArray[input - 1].markTaskComplete = false
+                    taskArray[input - 1].completionStatus = false
                     let currentCalendar = Calendar.current
                     let completeByDate = currentCalendar.date(byAdding: .day, value: 14, to: Date())
                     taskArray[input - 1].completeByDate = completeByDate
@@ -160,7 +160,7 @@ func listUncompleteTask() -> [Task] {
         
         var checkList = false
         for task in taskArray {
-            if task.markTaskIncomplete == false {
+            if task.completionStatus == false {
                 checkList = true
             }
         }
@@ -169,7 +169,7 @@ func listUncompleteTask() -> [Task] {
         }
         
         for (i, index) in taskArray.enumerated() {
-            if index.checkedIn == false{
+            if index.completionStatus == false{
                 
                 print("\(i + 1) \(index.title)")
             }
@@ -182,15 +182,15 @@ func listUncompleteTask() -> [Task] {
         if let input = Int(readLine()!) {
             
             if input > 0 && input < taskArray.count {
-                if taskArray[input - 1].checkedIn {
+                if taskArray[input - 1].completionStatus {
                     return print("This game is already found in the library.")
                 } else {
-                    taskArray[input - 1].checkedIn = true
-                    taskArray[input - 1].dueDate = nil
+                    taskArray[input - 1].completionStatus = true
+                    taskArray[input - 1].completeByDate = nil
                     print("These are available for check out:")
                     print("")
                     for task in taskArray{
-                        if task.checkedIn == true {
+                        if task.completionStatus == true {
                             print(task.title)
                         }
                     }

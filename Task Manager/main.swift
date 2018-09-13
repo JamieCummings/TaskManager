@@ -8,5 +8,7 @@
 
 import Foundation
 
-
+print("Welcome to the Task Manager \nPlease enter a number from the menu below:\n")
+let menu = Menu()
+menu.go()
 
