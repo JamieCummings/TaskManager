@@ -57,18 +57,21 @@ class taskManager {
         }
         print("")
         print("Current Task: \n")
-        for task in taskArray {
-            print(task.title)
+        for (i, index) in taskArray.enumerated() {
+            print("\(i + 1) \(index.title)")
         }
+        
         print("")
     }
+    
     func listCompleteTask() -> [Task] {
         var availableTask: [Task] = []
-        print("Task that are available:")
-        for task in taskArray {
-            if task.completionStatus == true {
-                availableTask.append(task)
-                print(task.title)
+        
+        print("Task that are complete:")
+        for (i,index) in taskArray.enumerated() {
+            if index.completionStatus == true {
+                availableTask.append(index)
+                print("\(i + 1). \(index.title)")
                 
             }
         }
@@ -78,9 +81,11 @@ class taskManager {
     
     func listAllTask() {
         print("All tasks:")
-        for task in taskArray {
-            print(task.title, task.priority)
+        for (i, index) in taskArray.enumerated() {
+            
+            print("\(i + 1) \(index.title)")
         }
+        
         
     }
     
@@ -89,11 +94,11 @@ class taskManager {
         var unavailableTask: [Task] = []
         
         print("Following task are incomplete:")
-        for task in taskArray {
-            if task.completionStatus == false {
-                unavailableTask.append(task)
-                print(task.title)
-                if let completeByDate = task.completeByDate{
+        for (i,index) in taskArray.enumerated() {
+            if index.completionStatus == false {
+                unavailableTask.append(index)
+                print("\(i + 1). \(index.title)")
+                if let completeByDate = index.completeByDate{
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "MM/dd/yyyy"
                     print(dateFormatter.string(from: completeByDate))
@@ -107,22 +112,44 @@ class taskManager {
     
     func markTaskComplete(){
         
-        let availableTask = listCompleteTask()
-        var priority = [Task]()
+        print("The following tasks are incomplete: ")
         
-        
-        
+        for (i, index) in taskArray.enumerated() {
+            if index.completionStatus == false {
+                
+                print("\(i + 1) \(index.title)")
+            }
+        }
         print("What task would you like to mark complete?")
+        
+        if let markTaskComplete = Int(readLine()!){
+            if markTaskComplete > 0 && markTaskComplete < taskArray.count{
+                taskArray[markTaskComplete - 1].completionStatus = true
+            } else {
+                print("please choose a correct number!")
+            }
+        } else {
+            print("please choose a correct number!")
+        }
         
         var checkList = false
         for task in taskArray {
-            if task.completionStatus == true {
+            if task.completionStatus == false {
                 checkList = true
             }
         }
         if !checkList {
-            return print("There are no completed task.")
+            return print("There are no incomplete task.")
         }
+        
+        
+        
+        print("\n")
+    }
+    
+    func markTaskIncomplete(){
+        
+        
         
         for (i, index) in taskArray.enumerated() {
             if index.completionStatus == true {
@@ -131,34 +158,24 @@ class taskManager {
             }
         }
         
-        print("\n")
-    }
-    
-    func markTaskIncomplete(){
-        
-        let availableTask = listIncompleteTask()
-        var priority = [Task]()
-        
-        
-        
         print("What task would you like to mark complete?")
         
         var checkList = true
+        if let markTaskIncomplete = Int(readLine()!){
+            if markTaskIncomplete > 0 && markTaskIncomplete < taskArray.count{
+                taskArray[markTaskIncomplete - 1 ].completionStatus = false
+            } else {
+                print("please choose a correct number!")
+            }
+        } else {
+            print("please choose a correct number!")
+        }
         for task in taskArray {
             if task.completionStatus == false{
                 checkList = false
             }
         }
-        if !checkList {
-            return print("I don't know what to say here")
-        }
-        
-        for (i, index) in taskArray.enumerated() {
-            if index.completionStatus == false {
-                
-                print("\(i + 1) \(index.title)")
-            }
-        }
+       
         
         print("\n")
     }
@@ -205,42 +222,38 @@ class taskManager {
                 return print("There are no task available to mark incomplete.")
             }
             
-            for (i, index) in taskArray.enumerated() {
-                if index.completionStatus == false{
-                    
-                    print("\(i + 1) \(index.title)")
-                }
-            }
             
-            print("\n")
+        }
+        
+        print("\n")
+        
+        print("Please enter in a number corresponding to the task you want to mark incomplete:")
+        
+        if let input = Int(readLine()!) {
             
-            print("Please enter in a number corresponding to the task you want to mark incomplete:")
-            
-            if let input = Int(readLine()!) {
-                
-                if input > 0 && input < taskArray.count {
-                    if taskArray[input - 1].completionStatus {
-                        return print("This game is already found in the library.")
-                    } else {
-                        taskArray[input - 1].completionStatus = true
-                        taskArray[input - 1].completeByDate = nil
-                        print("These are available for check out:")
-                        print("")
-                        for task in taskArray{
-                            if task.completionStatus == true {
-                                print(task.title)
-                            }
+            if input > 0 && input < taskArray.count {
+                if taskArray[input - 1].completionStatus {
+                    return print("This game is already found in the library.")
+                } else {
+                    taskArray[input - 1].completionStatus = true
+                    taskArray[input - 1].completeByDate = nil
+                    print("These are available for check out:")
+                    print("")
+                    for task in taskArray{
+                        if task.completionStatus == true {
+                            print(task.title)
                         }
                     }
-                } else {
-                    print("Invalid Input! Please enter in a number between 1 and \(taskArray.count) \n")
-                    markTaskIncomplete()
                 }
             } else {
                 print("Invalid Input! Please enter in a number between 1 and \(taskArray.count) \n")
                 markTaskIncomplete()
             }
+        } else {
+            print("Invalid Input! Please enter in a number between 1 and \(taskArray.count) \n")
+            markTaskIncomplete()
         }
     }
-    
 }
+
+

@@ -35,7 +35,7 @@ class Menu {
             2. Remove Task
             3. List All Task
             4. List Comleted Task
-            5. List Uncompleted Tasks
+            5. List Incompleted Tasks
             6. Mark Task Complete
             7. Mark Task Incomplete
             8. Give Completion Date
