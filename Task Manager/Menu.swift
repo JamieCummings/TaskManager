@@ -71,9 +71,9 @@ class Menu {
         case "7":
             TaskManager.markTaskIncomplete()
             help()
-        case "8":
-            TaskManager.completionDate()
-            quit()
+        //case "8":
+            //TaskManager.completionDate()
+            //quit()
         default:
             break
         }

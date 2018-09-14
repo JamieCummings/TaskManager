@@ -30,7 +30,7 @@ func getPriority() -> String {
     repeat {
         let line = readLine()!.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        if line == "One" || line == "Two" || line == "Three"  {
+        if line.lowercased() == "one" || line.lowercased() == "two" || line.lowercased() == "three"  {
             input = line
         } else {
             print("Invalid input")
