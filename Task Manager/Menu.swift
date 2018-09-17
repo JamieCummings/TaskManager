@@ -28,7 +28,7 @@ class Menu {
             
         } while !shouldQuit
     }
-    func help () {
+    func help() {
         print("""
             Menu
             1. Add Task
@@ -52,28 +52,26 @@ class Menu {
         case "1":
             
             TaskManager.addTask()
-            help()
+            
         case "2":
             TaskManager.removeTask()
-            help()
+            
         case "3":
             TaskManager.listAllTask()
-            help()
+            
         case "4":
             TaskManager.listCompleteTask()
-            help()
+           
         case "5":
             TaskManager.listIncompleteTask()
-            help()
+            
         case "6":
             TaskManager.markTaskComplete()
-            help()
+            
         case "7":
             TaskManager.markTaskIncomplete()
-            help()
-        //case "8":
-            //TaskManager.completionDate()
-            //quit()
+            
+    
         default:
             break
         }

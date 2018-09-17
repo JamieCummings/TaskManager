@@ -37,7 +37,10 @@ class taskManager {
         for task in taskArray {
             print("\(task.title) : \(task.description) : \(task.priority)")
         }
+        print("Thank you for adding a task!")
         print("\n")
+        sleep(3)
+        menu.help()
     }
     
     
@@ -59,8 +62,11 @@ class taskManager {
         for (i, index) in taskArray.enumerated() {
             print("\(i + 1) \(index.title)")
         }
+        print("Thank you for removing a task!")
+        print("\n")
+        sleep(3)
+        menu.help()
         
-        print("")
     }
     
     
@@ -82,13 +88,17 @@ class taskManager {
     
     
     
-   
+    
     func listAllTask() {
         print("All tasks:")
         for (i, index) in taskArray.enumerated() {
             
             print("\(i + 1) \(index.title)")
         }
+        print("")
+        print("\n")
+        sleep(3)
+        menu.help()
     }
     
     
@@ -143,7 +153,10 @@ class taskManager {
             return print("There are no incomplete task.")
         }
         
+        print("You completed a task!")
         print("\n")
+        sleep(3)
+        menu.help()
     }
     
     
@@ -158,7 +171,7 @@ class taskManager {
             }
         }
         
-        print("What task would you like to mark complete?")
+        print("What task would you like to mark incomplete?")
         
         var checkList = true
         if let markTaskIncomplete = Int(readLine()!){
@@ -175,66 +188,24 @@ class taskManager {
                 checkList = false
             }
         }
+        print("Maybe you should complete a task!")
         print("\n")
+        sleep(3)
+        menu.help()
     }
     
     
     
+    // completion date was here
     
-    func completionDate() {
-        if let input = Int(readLine()!) {
-            
-            if input > 0 && input < taskArray.count {
-                if !taskArray[input - 1].completionStatus{
-                    return print("This task is complete.")
-                } else {
-                    
-                    taskArray[input - 1].completionStatus = false
-                    let currentCalendar = Calendar.current
-                    let completeByDate = currentCalendar.date(byAdding: .day, value: 14, to: Date())
-                    taskArray[input - 1].completeByDate = completeByDate
-                    if let completeByDate = completeByDate{
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "MM/dd/yyyy"
-                        print("\(taskArray[input - 1].title) is due on \(dateFormatter.string(from: completeByDate))")
-                    }
-                }
-                
-            } else {
-                print("Invalid Input! Please enter in a number between 1 and \(taskArray.count)")
-            }
-        }
-        
-        
-        
-        
-        
-        func markTaskIncomplete(){
-            
-            for (i, index) in taskArray.enumerated() {
-                if index.completionStatus == true {
-                    
-                    print("\(i + 1) \(index.title)")
-                }
-            }
-            
-            print("What task would you like to mark incomplete?")
-            
-            var checkList = false
-            if let markTaskIncomplete = Int(readLine()!){
-                if markTaskIncomplete > 0 && markTaskIncomplete < taskArray.count{
-                    taskArray[markTaskIncomplete - 1 ].completionStatus = true
-                } else {
-                    print("please choose a correct number!")
-                }
-            } else {
-                print("please choose a correct number!")
-            }
-            for task in taskArray {
-                if task.completionStatus == true{
-                    checkList = true
-                }
-            }
-        }
-    }
+    
+    
+    
+    
+    
+    
 }
+
+
+
+
