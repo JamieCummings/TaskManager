@@ -10,7 +10,7 @@ import Foundation
 
 class taskManager {
     
-    fileprivate var taskArray: [Task] = [Task(title: "Laundry", description: "Wash whites, colors and bedding", priority: .One), Task(title: "Dishes",description: "Empty dish washer.", priority: .Two), Task(title: "Feed Dog",description: "Only one cup of food and water.", priority: .Three)]
+    var taskArray: [Task] = [Task(title: "Laundry", description: "Wash whites, colors and bedding", priority: .One), Task(title: "Dishes",description: "Empty dish washer.", priority: .Two), Task(title: "Feed Dog",description: "Only one cup of food and water.", priority: .Three)]
     
     func addTask(){
         print ("Add a new task:")
@@ -33,8 +33,8 @@ class taskManager {
         taskArray.append(Task(title: taskName, description: taskDescription, priority: taskPriority))
         
         print("\n")
-        
-        for task in taskArray {
+        let SortPriority = sortPriority(tasks: taskArray)
+        for task in SortPriority {
             print("\(task.title) : \(task.description) : \(task.priority)")
         }
         print("Thank you for adding a task!")
@@ -42,8 +42,6 @@ class taskManager {
         sleep(3)
         menu.help()
     }
-    
-    
     
     
     func removeTask(){
@@ -59,7 +57,8 @@ class taskManager {
         }
         print("")
         print("Current Task: \n")
-        for (i, index) in taskArray.enumerated() {
+        let SortPriority = sortPriority(tasks: taskArray)
+        for (i, index) in SortPriority.enumerated() {
             print("\(i + 1) \(index.title)")
         }
         print("Thank you for removing a task!")
@@ -76,7 +75,8 @@ class taskManager {
         var availableTask: [Task] = []
         
         print("Task that are complete:")
-        for (i,index) in taskArray.enumerated() {
+        let SortPriority = sortPriority(tasks: taskArray)
+        for (i,index) in SortPriority.enumerated() {
             if index.completionStatus == true {
                 availableTask.append(index)
                 print("\(i + 1). \(index.title)")
@@ -91,7 +91,8 @@ class taskManager {
     
     func listAllTask() {
         print("All tasks:")
-        for (i, index) in taskArray.enumerated() {
+        let SortPriority = sortPriority(tasks: taskArray)
+        for (i, index) in SortPriority.enumerated() {
             
             print("\(i + 1) \(index.title)")
         }
@@ -103,19 +104,20 @@ class taskManager {
     
     
     
-    func listIncompleteTask() -> [Task] {
+    func listIncompleteTask() {
         
         var unavailableTask: [Task] = []
         
         print("Following task are incomplete:")
-        for (i,index) in taskArray.enumerated() {
+        let SortPriority = sortPriority(tasks: taskArray)
+        for (i,index) in SortPriority.enumerated() {
             if index.completionStatus == false {
                 unavailableTask.append(index)
                 print("\(i + 1). \(index.title)")
             }
         }
         print("\n")
-        return unavailableTask
+    
     }
     
     
@@ -125,7 +127,8 @@ class taskManager {
         
         print("The following tasks are incomplete: ")
         
-        for (i, index) in taskArray.enumerated() {
+        let SortPriority = sortPriority(tasks: taskArray)
+        for (i, index) in SortPriority.enumerated() {
             if index.completionStatus == false {
                 
                 print("\(i + 1) \(index.title)")
@@ -164,7 +167,8 @@ class taskManager {
     
     func markTaskIncomplete(){
         
-        for (i, index) in taskArray.enumerated() {
+        let SortPriority = sortPriority(tasks: taskArray)
+        for (i, index) in SortPriority.enumerated() {
             if index.completionStatus == true {
                 
                 print("\(i + 1) \(index.title)")

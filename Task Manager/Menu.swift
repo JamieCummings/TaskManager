@@ -38,9 +38,8 @@ class Menu {
             5. List Incompleted Tasks
             6. Mark Task Complete
             7. Mark Task Incomplete
-            8. Give Completion Date
-            9. Help
-            10. Quit
+            8. Help
+            9. Quit
             
             """)
         print("Please enter a number from the Menu:\n")
@@ -70,6 +69,8 @@ class Menu {
             
         case "7":
             TaskManager.markTaskIncomplete()
+            
+    
             
     
         default:

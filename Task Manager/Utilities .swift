@@ -41,3 +41,11 @@ func getPriority() -> String {
     
 }
 
+func sortPriority(tasks: [Task]) -> [Task] {
+    return tasks.sorted(by: { (task1, task2) -> Bool in
+        
+        return task1.priority.rawValue < task2.priority.rawValue
+    })
+} 
+
+
