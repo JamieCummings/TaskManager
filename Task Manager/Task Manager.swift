@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+// the taskManager handles all the functions for the task
 class taskManager {
     
     var taskArray: [Task] = [Task(title: "Laundry", description: "Wash whites, colors and bedding", priority: .One), Task(title: "Dishes",description: "Empty dish washer.", priority: .Two), Task(title: "Feed Dog",description: "Only one cup of food and water.", priority: .Three)]
@@ -30,6 +30,16 @@ class taskManager {
             taskPriority = .Three
         }
         
+        if taskPriority == .One {
+            print ("you have 2 days to complete the task.")
+        }
+        if taskPriority == .Two {
+            print ("you have 5 days to complete the task.")
+        }
+        if taskPriority == .Three{
+            print ("you have 7 days to complete the task.")
+        }
+        
         taskArray.append(Task(title: taskName, description: taskDescription, priority: taskPriority))
         
         print("\n")
@@ -43,7 +53,7 @@ class taskManager {
         menu.help()
     }
     
-    
+// func to remove a task
     func removeTask(){
         
         if let removeTask = Int(readLine()!){
@@ -70,7 +80,7 @@ class taskManager {
     
     
     
-    
+// func to list all complete task
     func listCompleteTask() -> [Task] {
         var availableTask: [Task] = []
         
@@ -88,7 +98,7 @@ class taskManager {
     
     
     
-    
+// func to list all task
     func listAllTask() {
         print("All tasks:")
         let SortPriority = sortPriority(tasks: taskArray)
@@ -103,7 +113,7 @@ class taskManager {
     }
     
     
-    
+// func to list incomplete task
     func listIncompleteTask() {
         
         var unavailableTask: [Task] = []
@@ -117,12 +127,12 @@ class taskManager {
             }
         }
         print("\n")
-    
+        
     }
     
     
     
-    
+// func to mark task complete
     func markTaskComplete(){
         
         print("The following tasks are incomplete: ")
@@ -164,7 +174,7 @@ class taskManager {
     
     
     
-    
+// func to mark task incomplete
     func markTaskIncomplete(){
         
         let SortPriority = sortPriority(tasks: taskArray)
@@ -197,14 +207,6 @@ class taskManager {
         sleep(3)
         menu.help()
     }
-    
-    
-    
-    // completion date was here
-    
-    
-    
-    
     
     
     

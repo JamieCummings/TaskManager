@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+// this class holds the menu
 class Menu {
     
     var shouldQuit = false
@@ -45,7 +45,7 @@ class Menu {
         print("Please enter a number from the Menu:\n")
     }
     
-    
+// this func hadles the input for the menu
     func handleInput(_ input: String) {
         switch input {
         case "1":
@@ -69,7 +69,10 @@ class Menu {
             
         case "7":
             TaskManager.markTaskIncomplete()
-            
+        case "8":
+            help()
+        case "9":
+            quit()
     
             
     
@@ -77,12 +80,12 @@ class Menu {
             break
         }
     }
-    
+// this func will quit the app
     func quit() {
         shouldQuit = true
         print("Thanks for using the video game library")
     }
-    
+// func validate input for the menu
     func validateInput (_ input: String) -> Bool {
         let menuOptions = Array(1...8)
         
@@ -90,7 +93,7 @@ class Menu {
         
         return menuOptions.contains(number)
     }
-    
+// func get input for the menu
     func getInput () -> String {
         var input: String? = nil
         repeat {

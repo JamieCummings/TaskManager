@@ -12,7 +12,7 @@ import Foundation
 
 
 class Task{
-    // this is the data modle that represents our Games that will be stored in the library.
+    // this is the data modle that represents our Games that will be stored in the list of task.
 
         var title: String
         let description: String

@@ -8,8 +8,8 @@
 
 import Foundation
 
-
-
+// the utilities file holds some funcs that will be called upon in the task manager.
+// the func get string is being used in task manager, by having it in this file this code wont have to type this out each time its needed.
 func getString() -> String {
     var input: String? = nil
     repeat {
@@ -25,6 +25,7 @@ func getString() -> String {
     return input!
 }
 
+// the func gets the priority is being used in task manager, by having it in this file this code wont have to type this out each time its needed.
 func getPriority() -> String {
     var input: String? = nil
     repeat {
@@ -40,7 +41,7 @@ func getPriority() -> String {
     return input!
     
 }
-
+// this func sorts priority 
 func sortPriority(tasks: [Task]) -> [Task] {
     return tasks.sorted(by: { (task1, task2) -> Bool in
         
