@@ -56,6 +56,8 @@ class taskManager {
 
 // func to remove a task
     func removeTask(){
+        listAllTask()
+        print("Please enter which task you want to remove:")
         
         if let removeTask = Int(readLine()!){
             if removeTask > 0 && removeTask < taskArray.count{
@@ -82,7 +84,7 @@ class taskManager {
     
     
 // func to list all complete task
-    func listCompleteTask() -> [Task] {
+    func listCompleteTask() {
         var availableTask: [Task] = []
         
         print("Task that are complete:")
@@ -94,7 +96,7 @@ class taskManager {
             }
         }
         print("\n")
-        return availableTask
+        
     }
     
     
